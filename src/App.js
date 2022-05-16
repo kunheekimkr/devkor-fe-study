@@ -1,6 +1,16 @@
 import "./App.css";
 import React, { useState } from "react";
 
+function Modal(props) {
+  return (
+    <div className="modal">
+      <h4>{props.title}</h4>
+      <p>{props.date}</p>
+      <p>{props.context}</p>
+    </div>
+  );
+}
+
 function App() {
   let [posts, setPosts] = useState([
     "남자코트 추천",
@@ -8,7 +18,8 @@ function App() {
     "파이썬독학",
   ]);
   posts.sort();
-  
+  let [modal, setModal] = useState([false, false, false]);
+
   return (
     <div className="App">
       <div className="navbar">ReactBlog</div>
@@ -27,6 +38,22 @@ function App() {
             >
               글 수정
             </button>
+            <button
+              onClick={() => {
+                let copy = [...modal];
+                copy[i] = !modal[i];
+                setModal(copy);
+              }}
+            >
+              {posts[i]}
+            </button>
+            {modal[i] == true ? (
+              <Modal
+                title={posts[i]}
+                date="2월 17일 발행"
+                context="something"
+              ></Modal>
+            ) : null}
             <hr />
           </div>
         );
