@@ -1,15 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
-
-function Modal(props) {
-  return (
-    <div className="modal">
-      <h4>{props.title}</h4>
-      <p>{props.date}</p>
-      <p>{props.context}</p>
-    </div>
-  );
-}
+import Modal from "./Modal";
 
 function App() {
   let [posts, setPosts] = useState([
